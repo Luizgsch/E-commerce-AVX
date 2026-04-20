@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Search, ShoppingCart } from "lucide-react";
 
 import Container from "@/src/components/ui/container";
+import { publicPath } from "@/src/lib/public-path";
 
 const nav = [
   { label: "MODELOS", href: "#modelos" },
@@ -18,7 +19,7 @@ export default function SiteHeader() {
           className="relative block h-16 w-48 shrink-0 ml-4 sm:h-20 sm:w-60 md:h-24 md:w-72"
         >
           <Image
-            src="/images/brand/logo-avx.png"
+            src={publicPath("/images/brand/logo-avx.png")}
             alt="AVX Motors"
             fill
             className="object-contain object-left"
@@ -36,9 +37,7 @@ export default function SiteHeader() {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`px-4 py-1.5 text-[10px] font-bold tracking-[0.3em] transition-colors hover:text-accent ${
-                  item.active ? "text-accent" : "text-zinc-400"
-                }`}
+                className="px-4 py-1.5 text-[10px] font-bold tracking-[0.3em] text-zinc-400 transition-colors hover:text-accent"
               >
                 {item.label}
               </Link>

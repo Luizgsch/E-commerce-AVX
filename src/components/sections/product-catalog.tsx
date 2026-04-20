@@ -7,8 +7,9 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Battery, Zap, Clock, ArrowUpRight } from "lucide-react";
 
 import Container from "@/src/components/ui/container";
+import { publicPath } from "@/src/lib/public-path";
 
-const LUXURY_EASE = [0.22, 1, 0.36, 1];
+const LUXURY_EASE = [0.22, 1, 0.36, 1] as const;
 
 const categories = [
   { id: "avx-10", label: "AVX-10" },
@@ -83,7 +84,7 @@ export default function ProductCatalog() {
                 <div className="relative size-12 opacity-40 transition-opacity group-hover:opacity-100">
                    <div className={`relative w-full h-full grayscale invert ${activeCategory === cat.id ? 'brightness-125' : 'brightness-50'}`}>
                       <Image 
-                        src="/images/products/avx-10-white.png" 
+                        src={publicPath("/images/products/avx-10-white.png")} 
                         alt="" 
                         fill 
                         className="object-contain scale-75" 
@@ -138,7 +139,7 @@ export default function ProductCatalog() {
 
                 <div className="relative aspect-square mb-8">
                   <Image
-                    src={product.image}
+                    src={publicPath(product.image)}
                     alt={product.name}
                     fill
                     className={`object-contain transition-transform duration-700 ${product.transform} group-hover:scale-110`}

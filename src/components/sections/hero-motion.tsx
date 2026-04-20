@@ -4,6 +4,7 @@ import Image from "next/image";
 import { motion, useReducedMotion } from "framer-motion";
 
 import Container from "@/src/components/ui/container";
+import { publicPath } from "@/src/lib/public-path";
 
 /** Easing luxo — valor fixo solicitado */
 const LUXURY_EASE = [0.22, 1, 0.36, 1] as const;
@@ -103,7 +104,7 @@ export default function HeroMotion() {
             <div className="absolute bottom-[10%] left-[20%] right-[10%] h-8 bg-black/60 blur-2xl rounded-[100%] rotate-[-4deg] pointer-events-none" />
 
             <Image
-              src="/images/products/avx-10-white.png"
+              src={publicPath("/images/products/avx-10-white.png")}
               alt="Scooter AVX-10 Branca"
               fill
               priority

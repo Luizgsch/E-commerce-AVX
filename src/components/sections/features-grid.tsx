@@ -5,13 +5,14 @@ import { motion } from "framer-motion";
 import { MapPin, Zap, Gauge, Weight, Clock, Battery } from "lucide-react";
 
 import Container from "@/src/components/ui/container";
+import { publicPath } from "@/src/lib/public-path";
 
 const itemVariants = {
   hidden: { opacity: 0, y: 20 },
   visible: { 
     opacity: 1, 
     y: 0, 
-    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } 
+    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] as const } 
   }
 };
 
@@ -68,7 +69,7 @@ export default function FeaturesGrid() {
                <div className="relative z-10 flex flex-col items-center">
                   <Zap className="size-16 text-white mb-4" fill="white" />
                   <Image 
-                    src="/images/products/avx-10-white.png" 
+                    src={publicPath("/images/products/avx-10-white.png")} 
                     alt="Carga Rápida" 
                     width={150} 
                     height={150} 

@@ -5,7 +5,7 @@ import { Route, Clock, MapPin } from "lucide-react";
 
 import Container from "@/src/components/ui/container";
 
-const LUXURY_EASE = [0.22, 1, 0.36, 1];
+const LUXURY_EASE = [0.22, 1, 0.36, 1] as const;
 
 const itemVariants = {
   hidden: { opacity: 0, y: 30 },
