@@ -1,37 +1,66 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+🛸 AVX Motors | Digital Showcase & Lead Engine
+Uma Landing Page de ultra-luxo desenvolvida para a AVX Motors, focada em transformar o impacto visual de veículos autopropelidos em conversões reais para showroom físico. Este projeto faz parte de uma solução 360° que inclui SEO local e gestão estratégica de tráfego.
 
-## Getting Started
+💎 A Proposta de Valor
+Diferente de sites institucionais comuns, a plataforma AVX foi construída sob o conceito de "Cosmic Minimalism". O objetivo é reduzir a carga cognitiva e focar no desejo estético, utilizando tecnologias de ponta para garantir uma performance impecável e uma experiência imersiva.
 
-First, run the development server:
+🛠️ Stack Tecnológica
+Framework: Next.js 15 (App Router)
 
-```bash
+Estilização: Tailwind CSS v4
+
+Animações: Framer Motion (Luxury Easing & Parallax)
+
+Componentes: React Server Components (RSC) & Lucid Icons
+
+Backend: Next.js Server Actions para captura de leads
+
+Deployment: Vercel Edge Network
+
+🚀 Funcionalidades Chave
+Luxury Hero: Interface de impacto imediato com tipografia técnica e iluminação dinâmica.
+
+Catálogo Dinâmico: Navegação por categorias com estado compartilhado para filtragem de assets.
+
+Configurador de Cores: Sistema de visualização em tempo real utilizando filtros CSS avançados para simular materiais (Black, Metallic Gray, Arctic White).
+
+Engineering Deep Dive: Hotspots interativos para demonstração de especificações técnicas sem poluição visual.
+
+Lead Engine: Formulário de reserva otimizado com redirecionamento inteligente para WhatsApp, capturando o contexto de escolha do usuário.
+
+📁 Estrutura do Projeto
+Bash
+src/
+ ├── app/              # Rotas e layout principal
+ ├── components/
+ │    ├── sections/    # Seções da Landing Page (Hero, Catalog, Deep Dive)
+ │    └── ui/          # Componentes de interface base (BentoCard, Buttons)
+ ├── lib/              # Utilitários e configurações de dados
+ └── actions/          # Server Actions para submissão de formulários
+⚙️ Instalação e Execução
+Clonar o repositório:
+
+Bash
+git clone https://github.com/seu-usuario/avx-motors.git
+Instalar dependências:
+
+Bash
+npm install
+Configurar variáveis de ambiente:
+Crie um arquivo .env.local e adicione as chaves necessárias (WhatsApp Number, Webhooks, etc).
+
+Rodar em desenvolvimento:
+
+Bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+📈 Resultados e Negócio (Consultoria)
+Este repositório é o núcleo técnico de uma estratégia maior que inclui:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+GMN Optimization: Configuração estratégica do Google Maps para SEO local em Curitiba.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Paid Media: Funil de anúncios focado em Google Search e Instagram Lifestyle.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Tracking: Monitoramento via GTM e Meta Pixel para cálculo de CAC (Custo de Aquisição de Cliente).
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-# E-commerce-AVX
+📄 Licença
+Este projeto é de propriedade da AVX Motors. O código está disponível para fins de portfólio de Luiz | One-Man Software House.
