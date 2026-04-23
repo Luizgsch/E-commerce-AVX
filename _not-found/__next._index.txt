@@ -1,6 +1,6 @@
 1:"$Sreact.fragment"
-2:I[2550,["127","static/chunks/127-9a420f72386f78f4.js","177","static/chunks/app/layout-ede9479b47070a7f.js"],"default"]
+2:I[2550,["13","static/chunks/13-5403a8dfe6dde163.js","177","static/chunks/app/layout-7d3a9e47ce54bccb.js"],"default"]
 3:I[7121,[],""]
 4:I[4581,[],""]
-:HL["/E-commerce-AVX/_next/static/css/a1d3a8aa0395b915.css","style"]
-0:{"rsc":["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/E-commerce-AVX/_next/static/css/a1d3a8aa0395b915.css","precedence":"next"}]],["$","html",null,{"lang":"pt","className":"__variable_73d2c1 __variable_5c0ad4 h-full scroll-smooth antialiased","children":["$","body",null,{"className":"min-h-full flex flex-col bg-background font-sans text-foreground","children":[["$","$L2",null,{}],["$","$L3",null,{"parallelRouterKey":"children","template":["$","$L4",null,{}]}]]}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"G33xMwIxgwzZg7wAAQc2j"}
+:HL["/E-commerce-AVX/_next/static/css/c79a90149e09019a.css","style"]
+0:{"rsc":["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/E-commerce-AVX/_next/static/css/c79a90149e09019a.css","precedence":"next"}]],["$","html",null,{"lang":"pt","className":"__variable_73d2c1 __variable_5c0ad4 h-full scroll-smooth antialiased","children":["$","body",null,{"className":"min-h-full flex flex-col bg-background font-sans text-foreground","children":[["$","$L2",null,{}],["$","$L3",null,{"parallelRouterKey":"children","template":["$","$L4",null,{}]}]]}]}]]}],"isPartial":false,"staleTime":300,"varyParams":null,"buildId":"wpWcuURg693bepXW5rFBa"}
