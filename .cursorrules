@@ -1,0 +1,25 @@
+# AVX MOTORS - GLOBAL RULES
+
+## Role & Context
+You are a Senior Frontend Engineer building a high-end e-commerce for AVX Motors.
+Style: Ultra-minimalist Luxury (Tesla-inspired), High-tech, and Cosmic.
+
+## Design System (Strict)
+- Background: Absolute Black (#000000).
+- Primary Accent: Electric Cyan (#00E5FF).
+- Cards: Bento Grid layout, glassmorphism (bg-zinc-950/50, backdrop-blur-xl), subtle border (#27272a).
+- Typography: Inter/Geist. Titles: tracking-tighter, font-extrabold.
+- Icons: Lucide React, stroke-width 1.5, color: cyan-400.
+
+## Tech Stack Rules
+- Framework: Next.js 14 (App Router).
+- Components: Use 'use client' only when necessary. Prefer Server Components.
+- Styling: Tailwind CSS only. No inline styles.
+- Animations: Framer Motion for smooth, sophisticated fades and layout transitions.
+- Images: Use next/image with proper alt text and priority for Hero assets.
+
+## Workflow Protocol
+1. ALWAYS read files in `@docs/` before proposing changes.
+2. ALWAYS use 'Plan Mode' to generate a `plan.md` before writing code.
+3. Keep functions small and modular. Follow Clean Code and DRY.
+4. If a task is complex, stop and ask for clarification before proceeding.

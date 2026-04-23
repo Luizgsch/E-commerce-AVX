@@ -1,11 +1,23 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Route, Clock, MapPin } from "lucide-react";
+import { CalendarPlus, ExternalLink, MapPin } from "lucide-react";
 
 import Container from "@/src/components/ui/container";
+import { getShowroomBookingHref } from "@/src/lib/showroom-booking";
 
 const LUXURY_EASE = [0.22, 1, 0.36, 1] as const;
+
+const SHOWROOM_CITY = "Curitiba";
+const SHOWROOM_NAME = "Showroom AVX";
+const SHOWROOM_ADDRESS_LINES = [
+  "Rua Antonio Pastre, 247",
+  "Curitiba, PR",
+] as const;
+const MAPS_QUERY = encodeURIComponent(
+  "Rua Antonio Pastre, 247, Curitiba, PR",
+);
+const MAPS_HREF = `https://www.google.com/maps/search/?api=1&query=${MAPS_QUERY}`;
 
 const itemVariants = {
   hidden: { opacity: 0, y: 30 },
@@ -32,32 +44,57 @@ export default function StoresSection() {
             viewport={{ once: true }}
             className="flex flex-col gap-8"
           >
-            <motion.div variants={itemVariants} className="flex flex-col gap-4">
-              <h2 className="text-5xl lg:text-7xl font-black italic tracking-tighter text-white">
-                AVX CURITIBA
-              </h2>
-              <p className="max-w-md text-xl text-zinc-400 font-medium leading-relaxed">
-                Sinta a potência de perto em nosso showroom exclusivo.
+            <motion.div variants={itemVariants} className="flex flex-col gap-5">
+              <div className="flex flex-col gap-1">
+                <span className="text-[10px] font-bold tracking-[0.35em] text-zinc-500 uppercase">
+                  {SHOWROOM_CITY}
+                </span>
+                <h2 className="text-5xl lg:text-7xl font-black italic tracking-tighter text-white">
+                  {SHOWROOM_NAME}
+                </h2>
+              </div>
+              <p className="max-w-md text-base font-medium leading-relaxed text-zinc-400">
+                Modelos no showroom. Visita com hora marcada.
+              </p>
+              <p className="max-w-md text-xs tracking-wide text-zinc-600">
+                Seg–Sex · 9h–18h
               </p>
             </motion.div>
 
-            <motion.div variants={itemVariants} className="flex flex-col gap-6 pt-4 border-l border-cyan-500/20 pl-8">
-              <div className="flex flex-col gap-1">
-                <span className="text-[10px] font-bold tracking-[0.3em] text-zinc-500 uppercase">Horário de Funcionamento</span>
-                <div className="flex items-center gap-3 text-white">
-                  <Clock className="size-4 text-cyan-400" />
-                  <span className="text-lg font-medium tracking-tight">Seg - Sex: 09h às 18h</span>
-                </div>
-              </div>
-
-              <div className="pt-4">
-                <button className="group relative flex h-14 w-full items-center justify-center overflow-hidden rounded-full border border-white/5 bg-white/5 px-10 text-[10px] font-black tracking-[0.3em] text-white backdrop-blur-md transition-all hover:bg-white/10 sm:w-fit">
-                  <span className="relative z-10 flex items-center gap-2">
-                    COMO CHEGAR
-                    <Route className="size-4 text-cyan-400 group-hover:scale-110 transition-transform" />
+            <motion.div variants={itemVariants} className="flex flex-col gap-6 border-l border-cyan-500/20 pl-8">
+              <a
+                href={MAPS_HREF}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group/addr flex max-w-md flex-col gap-2 rounded-xl py-1 -my-1 outline-offset-4 transition-colors hover:text-cyan-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-cyan-400/60"
+              >
+                <span className="text-[10px] font-bold tracking-[0.3em] text-zinc-500 uppercase transition-colors group-hover/addr:text-zinc-400">
+                  Endereço · abre rotas no mapa
+                </span>
+                <span className="flex items-start gap-2 text-lg font-semibold tracking-tight text-white underline decoration-cyan-500/40 underline-offset-4 transition-colors group-hover/addr:decoration-cyan-400/80">
+                  <span className="text-left">
+                    {SHOWROOM_ADDRESS_LINES[0]}
+                    <br />
+                    {SHOWROOM_ADDRESS_LINES[1]}
                   </span>
-                  <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-cyan-400/40 to-transparent" />
-                </button>
+                  <ExternalLink
+                    className="size-4 shrink-0 text-cyan-400/80 opacity-80 transition-transform group-hover/addr:translate-x-0.5 group-hover/addr:-translate-y-0.5"
+                    aria-hidden
+                  />
+                </span>
+              </a>
+
+              <div>
+                <a
+                  href={getShowroomBookingHref("visit")}
+                  className="group relative inline-flex h-14 w-full items-center justify-center overflow-hidden rounded-full border border-cyan-500/35 bg-cyan-500/10 px-10 text-[10px] font-black tracking-[0.3em] text-cyan-300 backdrop-blur-md transition-all hover:bg-cyan-500/15 sm:w-fit"
+                >
+                  <span className="relative z-10 flex items-center gap-2">
+                    AGENDAR VISITA
+                    <CalendarPlus className="size-4 text-cyan-400 transition-transform group-hover:scale-110" />
+                  </span>
+                  <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-cyan-400/50 to-transparent" />
+                </a>
               </div>
             </motion.div>
           </motion.div>
@@ -100,13 +137,24 @@ export default function StoresSection() {
                   </div>
                 </div>
 
-                {/* Card Location Branding */}
-                <div className="relative z-10 flex flex-col gap-2">
-                  <span className="text-[10px] font-bold tracking-[0.3em] text-cyan-400 uppercase">Localização Estratégica</span>
-                  <p className="text-3xl font-black text-white tracking-tight leading-none italic">
-                    RUA ANTONIO PASTRE, 247
-                  </p>
-                </div>
+                {/* Card — endereço clicável (mesmo destino que na coluna esquerda) */}
+                <a
+                  href={MAPS_HREF}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group/map relative z-10 flex flex-col gap-2 rounded-2xl text-left outline-offset-4 transition-colors hover:text-cyan-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-cyan-400/60"
+                >
+                  <span className="text-[10px] font-bold tracking-[0.3em] text-cyan-400/90 uppercase">
+                    Ver no mapa
+                  </span>
+                  <span className="text-3xl font-black tracking-tight leading-tight italic text-white underline decoration-cyan-500/30 underline-offset-4 transition-colors group-hover/map:decoration-cyan-400/60">
+                    Rua Antonio Pastre, 247
+                  </span>
+                  <span className="flex items-center gap-1.5 text-[10px] font-bold tracking-[0.25em] text-zinc-500 uppercase">
+                    Rotas externas
+                    <ExternalLink className="size-3 text-cyan-400/70" aria-hidden />
+                  </span>
+                </a>
 
                 {/* Corner Accents */}
                 <div className="absolute top-8 right-8 size-4 border-t border-r border-white/20 rounded-tr-lg" />

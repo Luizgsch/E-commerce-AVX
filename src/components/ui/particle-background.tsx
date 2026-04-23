@@ -2,10 +2,21 @@
 
 import { useEffect, useState, useMemo } from "react";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
-import { type Container, type ISourceOptions } from "@tsparticles/engine";
+import { type ISourceOptions } from "@tsparticles/engine";
 import { loadSlim } from "@tsparticles/slim";
 
-export default function ParticleBackground() {
+export type ParticleBackgroundProps = {
+  variant?: "fullscreen" | "section";
+  /** Unique id per instance (section must differ from global `tsparticles`). */
+  id?: string;
+  className?: string;
+};
+
+export default function ParticleBackground({
+  variant = "fullscreen",
+  id = "tsparticles",
+  className = "",
+}: ParticleBackgroundProps) {
   const [init, setInit] = useState(false);
 
   useEffect(() => {
@@ -16,15 +27,14 @@ export default function ParticleBackground() {
     });
   }, []);
 
-  const particlesLoaded = async (container?: Container): Promise<void> => {
-    // Container ready
-  };
+  const particlesLoaded = async (): Promise<void> => {};
 
-  const options: ISourceOptions = useMemo(
-    () => ({
-      fullScreen: { 
-        enable: true,
-        zIndex: 0 
+  const options: ISourceOptions = useMemo(() => {
+    const isSection = variant === "section";
+    return {
+      fullScreen: {
+        enable: !isSection,
+        zIndex: 0,
       },
       background: {
         color: {
@@ -61,37 +71,48 @@ export default function ParticleBackground() {
             default: "out",
           },
           random: true,
-          speed: { min: 0.3, max: 1 },
+          speed: { min: isSection ? 0.15 : 0.3, max: isSection ? 0.45 : 1 },
           straight: false,
         },
         number: {
           density: {
             enable: true,
           },
-          value: 300,
+          value: isSection ? 55 : 300,
         },
         opacity: {
-          value: { min: 0.2, max: 0.6 },
+          value: { min: isSection ? 0.08 : 0.2, max: isSection ? 0.28 : 0.6 },
         },
         shape: {
           type: "circle",
         },
         size: {
-          value: { min: 1, max: 3 },
+          value: { min: 1, max: isSection ? 2 : 3 },
         },
       },
       detectRetina: true,
-    }),
-    []
-  );
+    };
+  }, [variant]);
 
   if (!init) return null;
 
+  if (variant === "section") {
+    return (
+      <div
+        className={`pointer-events-none absolute inset-0 z-[1] ${className}`.trim()}
+        aria-hidden
+      >
+        <Particles
+          id={id}
+          particlesLoaded={particlesLoaded}
+          options={options}
+          className="size-full"
+        />
+      </div>
+    );
+  }
+
   return (
-    <Particles
-      id="tsparticles"
-      particlesLoaded={particlesLoaded}
-      options={options}
-    />
+    <Particles id={id} particlesLoaded={particlesLoaded} options={options} />
   );
 }
